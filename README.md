@@ -4,7 +4,7 @@
 
 # Summary
 
-This repository contains people and boxes.  Each person has two positions (labelled "you" and "person), and each position has three different conditions (labelled "ignorant", "know-plaus", and "know-implaus").
+This repository contains people and boxes.  The main one is the `base-image` figure.  This denotes which box your things are actually in.  Each person has two positions (labelled "you" and "person), and each position has three different conditions (labelled "ignorant", "know-plaus", and "know-implaus").
 
 # Installation
 
