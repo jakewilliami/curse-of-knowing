@@ -1,5 +1,7 @@
 \documentclass[border=2pt]{standalone}
 \usepackage{tikz}
+\usetikzlibrary{positioning,arrows}
+\usepackage[]{tikzpeople}
 
 \makeatletter
 \pgfkeys{/pgf/.cd,
@@ -49,51 +51,20 @@
 \makeatother
 
 
+\usetikzlibrary{matrix, positioning}
+\tikzset{
+  mymat/.style={
+    matrix of nodes,
+    % distance between columns in matrix
+    column sep=-\pgflinewidth,
+    nodes={ % set style for nodes inside matrix
+       draw=black,
+       solid,
+       anchor=center 
+   }
+  } 
+}
 
-
-
-
-
-
-\begin{document}
-\begin{tikzpicture}
-
-% BOXES
-
-% Yellow Box
-\node[parallelepiped,draw=red,fill=yellow,
-  minimum width=1.5cm,minimum height=1.5cm] (1) at (8,0) {};
- % Green Box
-\node[parallelepiped,draw=blue,fill=green,
-  minimum height=2.5cm,minimum width=1.5cm,parallelepiped offset x=4mm] (2)
- at (12,0) {};
- % Blue Box
- \node[parallelepiped,draw=orange,fill=blue,
-  minimum height=2cm,minimum width=2.5cm,parallelepiped offset x=8mm] (3)
- at (4,0) {};
- % Red Box
- \node[parallelepiped,draw=purple,fill=red,
-  minimum height=3cm,minimum width=1cm,parallelepiped offset x=2mm] (4)
- at (0,0) {};
- 
- 
- % LABELS
- \node (a) at (1) [yshift=-5em] {A};
- \node (b) at (2) [yshift=-5em] {B};
- \node (c) at (3) [yshift=-5em] {C};
- \node (d) at (4) [yshift=-5em] {D};
- 
-\end{tikzpicture}
-\end{document}
-
-
-
-
-
-
-
-
-
-
-
-
+\definecolor{mybrown}{RGB}{148,60,19}
+\definecolor{darkbrown}{RGB}{139,69,19}
+%\definecolor{vdarkbrown}{RGB}{27,18,11}

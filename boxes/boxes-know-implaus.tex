@@ -2,11 +2,11 @@
 
 % Yellow Box
 \node[parallelepiped,draw=red,fill=yellow,
-  minimum width=1.5cm,minimum height=1.5cm] (1) {\Huge{\bfseries*}};
+  minimum width=1.5cm,minimum height=1.5cm] (1) at (4,0) {};
  % Green Box
 \node[parallelepiped,draw=blue,fill=green,
   minimum height=2.5cm,minimum width=1.5cm,parallelepiped offset x=4mm] (2)
- at (4,0) {};
+ at (0,0) {};
  % Blue Box
  \node[parallelepiped,draw=orange,fill=blue,
   minimum height=2cm,minimum width=2.5cm,parallelepiped offset x=8mm] (3)
@@ -22,7 +22,6 @@
  \node (b) at (2) [yshift=-5em] {B};
  \node (c) at (3) [yshift=-5em] {C};
  \node (d) at (4) [yshift=-5em] {D};
-
 
 
 
