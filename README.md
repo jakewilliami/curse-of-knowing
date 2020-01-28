@@ -18,6 +18,7 @@ cd ${HOME} && git clone https://github.com/jakewilliami/tex-macros.git
 To complile each figure after changing the `*.tex` files in the main directory (in which this `README.md` is located), run the following
 
 ```
+cd curse-of-knowing;
 for figure in $(find . -name fig.tex -type f -print); do
     cd `dirname ${figure}` && texfot pdflatex fig.tex; cd -
 done
