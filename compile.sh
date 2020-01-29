@@ -19,7 +19,8 @@ COMP_DONE='echo -e "${BGREEN}Compiling figures complete.${NORM}"'
 CHANGE_MSG='echo -e "${BWHITE}Run the command \`${BGREEN}cd ${PATH_TO_GIT}${NORM}\`${BWHITE} to change your current directory to the Curse of Knowledge git directory.${NORM}"'
 COMP_ERR='echo -e "${BRED}Not working in the Curse of Knowing directory.  See open \`-c\`.${BNORM}"'
 ERR_HELP='echo -e "${BRED}Invalid option.  Use option \`-h\` for help.${NORM}"'
-
+CONV_MSG='echo -e "${BYELLOW}Now converting all figures to JPG.  This may take a moment.${NORM}"'
+CONV_DONE='echo -e "${BGREEN}Converting figures complete.  JPGs created.${NORM}"'
 
 
 # Help
@@ -65,7 +66,12 @@ latex_compile() {
           cd `dirname ${figure}` && texfot pdflatex fig.tex
           cd -
         done
-        eval "${COMP_DONE}"
+        eval "${CONV_MSG}"
+        for figure in $(find . -name fig.pdf -type f -print); do 
+            cd `dirname ${figure}` && convert -density 1000 fig.pdf fig.png
+            cd -
+        done
+        eval "${CONV_DONE}"
         if which open > /dev/null 2>&1
         then
             open .
