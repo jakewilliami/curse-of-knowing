@@ -15,6 +15,9 @@ Simply open terminal and run
 CURRENT_DIR="$(pwd)"; git clone https://github.com/jakewilliami/tex-macros.git && echo 'export PATH=$PATH:${CURRENT_DIR}/curse-of-knowing/' >> ~/.bash_profile && chmod u+x curse-of-knowing/compile.sh && source ~/.bash_profile
 ```
 
+# Making a pull request
+While working in the `dev` branch, see [here](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/merging-a-pull-request).  To bring the `dev` branch up to date with `master` **after you have merged the pull request**, see [here](https://gist.github.com/santisbon/a1a60db1fb8eecd1beeacd986ae5d3ca).
+
 # Recursively compiling figures
 
 To complile each figure after changing the `*.tex` files in the main directory (in which this `README.md` is located), run the script `compile.sh`.  **This requires having LaTeX installed (see below).**
