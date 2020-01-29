@@ -12,7 +12,7 @@ This repository contains people and boxes.  The main one is the `base-image` fig
 
 Simply open terminal and run
 ```
-CURRENT_DIR="$(pwd)"; git clone https://github.com/jakewilliami/tex-macros.git && echo 'export PATH=$PATH:${CURRENT_DIR}/curse-of-knowing/' >> ~/.bash_profile && chmod u+x curse-of-knowing/compile.sh && source ~/.bash_profile
+git clone https://github.com/jakewilliami/tex-macros.git && echo "export PATH=\$PATH:$(pwd)/curse-of-knowing/" && chmod u+x curse-of-knowing/compile.sh && source ~/.bash_profile
 ```
 
 # Making a pull request
