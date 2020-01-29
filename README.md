@@ -6,23 +6,18 @@
 
 This repository contains people and boxes.  The main one is the `base-image` figure.  This denotes which box your things are actually in.  Each person has two positions (labelled "you" and "person), and each position has three different conditions (labelled "ignorant", "know-plaus", and "know-implaus").
 
+**Please use the `dev` branch when making changes, as Qualtrics is accessing the master branch.**
+
 # Installation
 
-Simply run
+Simply open terminal and run
 ```
-cd ${HOME} && git clone https://github.com/jakewilliami/tex-macros.git
+CURRENT_DIR="$(pwd)"; git clone https://github.com/jakewilliami/tex-macros.git && echo 'export PATH=$PATH:${CURRENT_DIR}/curse-of-knowing/' >> ~/.bash_profile && chmod u+x curse-of-knowing/compile.sh && source ~/.bash_profile
 ```
 
 # Recursively compiling figures
 
-To complile each figure after changing the `*.tex` files in the main directory (in which this `README.md` is located), run the following
-
-```
-cd curse-of-knowing;
-for figure in $(find . -name fig.tex -type f -print); do
-    cd `dirname ${figure}` && texfot pdflatex fig.tex; cd -
-done
-```
+To complile each figure after changing the `*.tex` files in the main directory (in which this `README.md` is located), run the script `compile.sh`.  **This requires having LaTeX installed (see below).**
 
 # Obtaining `TeXLive`
 
