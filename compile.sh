@@ -68,7 +68,7 @@ latex_compile() {
         done
         eval "${CONV_MSG}"
         for figure in $(find . -name fig.pdf -type f -print); do 
-            cd `dirname ${figure}` && convert -density 200 fig.pdf fig.png
+            cd `dirname ${figure}` && convert -density 150 fig.pdf fig.png
             cd -
         done
         eval "${CONV_DONE}"
