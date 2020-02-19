@@ -17,7 +17,7 @@ LOOK_MSG='echo -e "${BYELLOW}Looking for the curse-of-knowing directory.  Please
 COMP_MSG='echo -e "${BYELLOW}Now compiling all figures.  This may take a moment.${NORM}"'
 COMP_DONE='echo -e "${BGREEN}Compiling figures complete.${NORM}"'
 CHANGE_MSG='echo -e "${BWHITE}Run the command \`${BGREEN}cd ${PATH_TO_GIT}${NORM}\`${BWHITE} to change your current directory to the Curse of Knowledge git directory.${NORM}"'
-COMP_ERR='echo -e "${BRED}Not working in the Curse of Knowing directory.  See open \`-c\`.${BNORM}"'
+COMP_ERR='echo -e "${BRED}Not working in the Curse of Knowing directory.  See option \`-c\`.${BNORM}"'
 ERR_HELP='echo -e "${BRED}Invalid option.  Use option \`-h\` for help.${NORM}"'
 CONV_MSG='echo -e "${BYELLOW}Now converting all figures to JPG.  This may take a moment.${NORM}"'
 CONV_DONE='echo -e "${BGREEN}Converting figures complete.  JPGs created.${NORM}"'
@@ -43,6 +43,8 @@ find_function() {
         echo `dirname "$gitdir"` 
     done | grep 'curse-of-knowing'
 }
+
+
 fd_function() {
     fd --hidden --absolute-path --type d --color never --regex '^.git$' / | \
     while IFS= read -r gitdir
@@ -87,15 +89,15 @@ latex_compile() {
 #determine which find function to use
 look_for_git_and_compile() {
     eval "${LOOK_MSG}"
-    if which fd > /dev/null 2>&1
+    if command -v fd > /dev/null 2>&1
     then
         PATH_TO_GIT="$(fd_function)"
         cd "${PATH_TO_GIT}"
-        if which open > /dev/null 2>&1
+        if command -v open > /dev/null 2>&1
         then
             latex_compile
             open .
-        elif which xdg-open > /dev/null 2>&1
+        elif command -v xdg-open > /dev/null 2>&1
         then
             latex_compile
             xdg-open .
@@ -103,11 +105,11 @@ look_for_git_and_compile() {
     else
         PATH_TO_GIT="$(fd_function)"
         cd "${PATH_TO_GIT}"
-        if which open > /dev/null 2>&1
+        if command -v open > /dev/null 2>&1
         then
             latex_compile 
             open .
-        elif which xdg-open > /dev/null 2>&1
+        elif command -v xdg-open > /dev/null 2>&1
         then
             latex_compile
             xdg-open .
@@ -118,7 +120,7 @@ look_for_git_and_compile() {
 
 #Go to curse of knowledge directory
 go_to_dir() {
-    if which fd > /dev/null 2>&1
+    if command -v fd > /dev/null 2>&1
     then
         PATH_TO_GIT="$(fd_function | sed 's/ /\\ /g')"
         eval "${CHANGE_MSG}"
