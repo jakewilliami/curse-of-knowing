@@ -39,8 +39,8 @@ display_help() {
 find_function() {
     find / -name ".git" -type d -print 2> >(grep -v "Permission denied" >&2) 2> >(grep -v "Operation not permitted" >&2) 2> >(grep -v "Not a directory" >&2) | \
     while IFS= read -r gitdir
-    do 
-        echo `dirname "$gitdir"` 
+    do
+        echo `dirname "$gitdir"`
     done | grep 'curse-of-knowing'
 }
 
@@ -48,7 +48,7 @@ find_function() {
 fd_function() {
     fd --hidden --absolute-path --type d --color never --regex '^.git$' / | \
     while IFS= read -r gitdir
-    do 
+    do
         echo `dirname "$gitdir"`
     done | grep 'curse-of-knowing'
 }
@@ -69,8 +69,8 @@ latex_compile() {
           cd -
         done
         eval "${CONV_MSG}"
-        for figure in $(find . -name fig.pdf -type f -print); do 
-            cd `dirname ${figure}` && convert -density 150 fig.pdf fig.png
+        for figure in $(find . -name fig.pdf -type f -print); do
+            cd `dirname ${figure}` > /dev/null && echo "$PWD/fig.pdf" && pdftoppm fig.pdf fig -png && mv fig-1.png fig.png
             cd -
         done
         eval "${CONV_DONE}"
@@ -82,7 +82,7 @@ latex_compile() {
             xdg-open .
         fi
     else
-        eval "${COMP_ERR}" 
+        eval "${COMP_ERR}"
     fi
 }
 
@@ -107,7 +107,7 @@ look_for_git_and_compile() {
         cd "${PATH_TO_GIT}"
         if command -v open > /dev/null 2>&1
         then
-            latex_compile 
+            latex_compile
             open .
         elif command -v xdg-open > /dev/null 2>&1
         then
@@ -126,7 +126,7 @@ go_to_dir() {
         eval "${CHANGE_MSG}"
     else
         PATH_TO_GIT="$(find_function | sed 's/ /\\ /g')"
-        eval "${CHANGE_MSG}" 
+        eval "${CHANGE_MSG}"
     fi
 }
 
@@ -138,7 +138,7 @@ while getopts ":-:hcl" OPTION; do
                     case $OPTARG in
                         change-directory)
                             go_to_dir ;;
-                        latex-compile)       
+                        latex-compile)
                             latex_compile ;;
                         help)
                             display_help ;;
